@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    password: 123
+    dbcp2:
+      min-idle: 20
+      test-on-borrow: true
+      test-while-idle: true
+      validation-query: SELECT 1
+      initial-size: 2
+      connection-properties: characterEncoding=utf8
+      test-on-return: false
+      max-wait-millis: 60000
+    driverClassName: com.mysql.jdbc.Driver
+    type: org.apache.commons.dbcp2.BasicDataSource
+    url: jdbc:mysql://127.0.0.1:3306/testmybatis?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml

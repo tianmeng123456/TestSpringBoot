@@ -16,6 +16,14 @@ spring:
     type: org.apache.commons.dbcp2.BasicDataSource
     url: jdbc:mysql://127.0.0.1:3306/testmybatis?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     username: root
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    encoding: UTF-8
+    suffix: .html
+    enabled: true
+    servlet:
+      content-type: text/html
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

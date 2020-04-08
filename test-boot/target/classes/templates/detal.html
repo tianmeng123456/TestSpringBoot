@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="keywords" th:attr="content=${data.data.catory}"/>
+    <meta name="description" th:attr="content=${data.data.title}"/>
+    <title th:text="${data.data.title}">品茗IT-博文详情</title>
+
+    <!-- CSS  -->
+    <link href="https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/material-icons.min.css" rel="stylesheet">
+    <link href="https://lib.baomitu.com/materialize/0.100.2/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <script src="https://lib.baomitu.com/jquery/3.3.0/jquery.min.js"></script>
+    <style>
+
+        nav ul a,
+        nav .brand-logo {
+            color: #444;
+        }
+        .side-nav{
+            max-width: 50%;
+        }
+        p {
+            line-height: 2rem;
+        }
+
+        .button-collapse {
+            color: #26a69a;
+        }
+
+        .parallax-container {
+            min-height: 380px;
+            line-height: 0;
+            height: auto;
+            color: rgba(255,255,255,.9);
+        }
+        .parallax-container .section {
+            width: 100%;
+        }
+
+        @media only screen and (max-width : 992px) {
+            .parallax-container .section {
+                position: absolute;
+                top: 40%;
+            }
+            #index-banner .section {
+                top: 10%;
+            }
+
+        }
+
+        @media only screen and (max-width : 600px) {
+            #index-banner .section {
+                top: 0;
+            }
+
+            .collection .collection-item.avatar {
+                padding-left: 15px;
+            }
+        }
+
+        .icon-block {
+            padding: 0 15px;
+        }
+        .icon-block .material-icons {
+            font-size: inherit;
+        }
+
+        footer.page-footer {
+            margin: 0;
+        }
+
+        .token.punctuation {
+            color: #999;
+        }
+        pre {
+            -moz-osx-font-smoothing: initial;
+            -webkit-font-smoothing: initial;
+            background-color: #f8f8f8;
+            font-family: 'Roboto Mono', Monaco, courier, monospace;
+            line-height: 1.5rem;
+            margin: 1.2em 0;
+            overflow: auto;
+            padding: 0 1.4rem;
+            position: relative;
+            word-wrap: normal;
+        }
+        pre > code {
+            -moz-osx-font-smoothing: initial;
+            -webkit-font-smoothing: initial;
+            background-color: #f8f8f8;
+            border-radius: 2px;
+            color: #525252;
+            display: block;
+            font-family: 'Roboto Mono', Monaco, courier, monospace;
+            font-size: 0.8rem;
+            line-height: inherit;
+            margin: 0 2px;
+            max-width: inherit;
+            overflow: inherit;
+            padding: 2.2em 5px;
+            white-space: inherit;
+        }
+
+        .dialog{
+            position: relative;
+            display: inline-block;
+            max-width: 200px;
+            padding: 4px 8px;
+            border-radius: 2px;
+            background-color: #dddddd;
+            line-height: 20px;
+            font-size: 14px;
+        }
+        .u-tri:before{
+            position: absolute;
+            left: 77px;
+            top: 11px;
+            content: '';
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 12px solid transparent;
+            border-left: 12px solid #dddddd;
+        }
+        .question{
+            font-size: 22px;
+            font-weight: bold;
+            color: #112f6b;
+        }
+        .question-index{
+            font-size: 10px;
+            color: grey;
+        }
+        .btn{
+            padding: 0 1rem;
+            color:#2196f3 ;
+        }
+        .authorName{
+            padding-left:10px;
+            font-size: 14px;
+            color: #64b5f6 ;
+            cursor: pointer;
+        }
+        .createTime{
+            padding-left:10px;
+            font-size: 12px;
+            color: grey;
+        }
+        .catory{
+            padding-left:5px;
+            font-size: 14px;
+            color: grey;
+        }
+        .catory:before{
+            content:"【";
+        }
+        .catory:AFTER{
+            content:"】";
+        }
+        .outer {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /*设置成弹性盒子 */
+            display: -webkit-box;
+            /*显示的个数 */
+            -webkit-line-clamp: 2;
+            /* 属性规定框的子元素应该被水平或垂直排列。 */
+            -webkit-box-orient: vertical;
+        }
+        .editBtn{
+            padding-right:40px;
+        }
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 50px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+        .comment-form{
+            height: 100px;
+        }
+        .comments-list-area{
+            padding: 20px 10px;
+        }
+        .comments-area{
+            padding: 20px 10px;
+        }
+        .important-text{
+            font-weight: bold;
+            color:#112f6b;
+        }
+        .replyCommentBtn{
+            margin-left:10px;
+            color:light-blue;
+        }
+        .replyCommentBtn:hover{
+            color:#1565c0;
+        }
+        .fixed-menu{
+            position: relative;
+        }
+    </style>
+</head>
+<body class="amber lighten-5">
+<!-- header end -->
+<div class="fixed-menu hide-on-med-and-down">
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+</div>
+<!-- content -->
+<div class="section no-pad-bot " >
+    <div class="container">
+        <div class="card-panel" style="min-height:90vh;padding: 0px">
+            <ul class="collection" id="issueList" style="border: none">
+                <li class="collection-item avatar">
+                    <div class="row">
+                        <div class="col s12"><span class="question" id="title"  th:text="${data.data.title}">Spring序列化布尔类型错误</span></div>
+                    </div>
+                    <div class="row">
+                        <span class="catory" id="catory"  th:text="${data.data.catory}">【软件使用】</span>
+                        <span class="createTime" id="createTime" th:text="${#dates.format(data.data.createTime,'yyyy-MM-dd HH:mm:ss')}">2019-03-06</span>
+                        <span class="createTime" id="openStatus" th:text="${data.data.open}==0?'公开':'私有'">未知</span>
+
+                        <a class="authorName" id="authorName" th:href="'/page/userData.html?user=' + ${data.data.author}" th:text="${data.data.author}">匿名</a>
+                        <span style="padding-left:20px;" class="createTime">点赞：<span class="starNum" id="starNum" th:text="${data.data.star}">1</span></span>
+
+                        <a id="editBtn" class="editBtn right" th:href="'/page/issue/editIssue.html?id=' + ${data.data.id}" th:if="${#strings.equals(data.remark,data.data.author)}">编辑</a>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row" style="margin-top: 2rem;">
+                        <div class="col s12">
+                            <span class="answer markdown-section" id="content" ></span>
+                        </div>
+                    </div>
+
+                </li>
+
+            </ul>
+            <div class="divider"></div>
+            <div class="center" style="padding-top: 20px;;left: 45%;padding-bottom: 20px;">
+                <a id="starBtn" th:onclick="'javascript:issueStar(' + ${data.data.id} + ');'" class="waves-effect waves-light btn light-blue lighten-5"><i id="star_icon" class="material-icons right">favorite_border</i>赞</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer start -->
+<footer class="page-footer teal">
+    <div class="container">
+        <div class="row">
+            <div class="col l8 s12">
+                <h5 class="white-text">网站简介.</h5>
+                <p class="grey-text text-lighten-4">
+                    本站提供多领域的技术解决方案，包括web网站、小程序、开源项目、h5等。
+                </p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            Copyright (c) 2018-present, 陈付菲.
+            <a class="grey-text text-lighten-4 right" ></a>
+        </div>
+    </div>
+</footer>
+<!-- footer end -->
+
+</body>
+
+<script src="https://lib.baomitu.com/materialize/0.100.2/js/materialize.min.js"></script>
+<script th:inline="javascript">
+    $(function () {
+
+
+    });
+
+</script>
+
+</html>
